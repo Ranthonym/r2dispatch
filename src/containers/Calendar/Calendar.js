@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useCallback, useRef } from "react";
 
 import TUICalendar from "@toast-ui/react-calendar";
 import { ISchedule } from "tui-calendar";
@@ -25,6 +25,27 @@ const schedules: ISchedule[] = [
 export default function Calendar() {
   const cal = useRef(null);
 
+  const onBeforeCreateSchedule = useCallback((scheduleData) => {
+    console.log(scheduleData);
+
+    const schedule = {
+      id: String(Math.random()),
+      title: scheduleData.title,
+      isAllDay: scheduleData.isAllDay,
+      start: scheduleData.start,
+      end: scheduleData.end,
+      category: scheduleData.isAllDay ? "allday" : "time",
+      dueDateClass: "",
+      location: scheduleData.location,
+      raw: {
+        class: scheduleData.raw["class"],
+      },
+      state: scheduleData.state,
+    };
+
+    cal.current.calendarInst.createSchedules([schedule]);
+  }, []);
+
   return (
     <div className={classes.Calendar}>
       <h1>Welcome to R2Dispatch</h1>
@@ -38,6 +59,8 @@ export default function Calendar() {
         template={{}}
         taskView={false}
         useDetailPopup
+        useCreationPopup
+        onBeforeCreateSchedule={onBeforeCreateSchedule}
       />
     </div>
   );
