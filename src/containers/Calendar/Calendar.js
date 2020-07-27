@@ -37,6 +37,7 @@ export default function Calendar() {
         scheduleView={["time"]}
         template={{}}
         taskView={false}
+        useDetailPopup
       />
     </div>
   );
