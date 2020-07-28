@@ -27,13 +27,14 @@ const schedules: ISchedule[] = [
 export default function Calendar() {
   const cal = useRef(null);
 
+  // add new schedule object
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
     console.log(scheduleData);
 
     const schedule = {
       id: String(Math.random()),
       title: scheduleData.title,
-      body: scheduleData.location,
+      body: scheduleData.body,
       isAllDay: scheduleData.isAllDay,
       start: scheduleData.start,
       end: scheduleData.end,
@@ -49,12 +50,26 @@ export default function Calendar() {
     cal.current.calendarInst.createSchedules([schedule]);
   }, []);
 
+  // delete schedule object
   const onBeforeDeleteSchedule = useCallback((res) => {
     console.log(res);
 
     const { id, calendarId } = res.schedule;
 
     cal.current.calendarInst.deleteSchedule(id, calendarId);
+  }, []);
+
+  // edit existing schedule object
+  const onBeforeUpdateSchedule = useCallback((e) => {
+    console.log(e);
+
+    const { schedule, changes } = e;
+
+    cal.current.calendarInst.updateSchedule(
+      schedule.id,
+      schedule.calendarId,
+      changes
+    );
   }, []);
 
   return (
@@ -73,6 +88,7 @@ export default function Calendar() {
         useCreationPopup
         onBeforeCreateSchedule={onBeforeCreateSchedule}
         onBeforeDeleteSchedule={onBeforeDeleteSchedule}
+        onBeforeUpdateSchedule={onBeforeUpdateSchedule}
       />
     </div>
   );
