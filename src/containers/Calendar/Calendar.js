@@ -33,6 +33,7 @@ export default function Calendar() {
     const schedule = {
       id: String(Math.random()),
       title: scheduleData.title,
+      body: scheduleData.location,
       isAllDay: scheduleData.isAllDay,
       start: scheduleData.start,
       end: scheduleData.end,
@@ -46,6 +47,14 @@ export default function Calendar() {
     };
 
     cal.current.calendarInst.createSchedules([schedule]);
+  }, []);
+
+  const onBeforeDeleteSchedule = useCallback((res) => {
+    console.log(res);
+
+    const { id, calendarId } = res.schedule;
+
+    cal.current.calendarInst.deleteSchedule(id, calendarId);
   }, []);
 
   return (
@@ -63,6 +72,7 @@ export default function Calendar() {
         useDetailPopup
         useCreationPopup
         onBeforeCreateSchedule={onBeforeCreateSchedule}
+        onBeforeDeleteSchedule={onBeforeDeleteSchedule}
       />
     </div>
   );
