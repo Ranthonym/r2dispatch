@@ -74,8 +74,6 @@ export default function Calendar() {
 
   return (
     <div className={classes.Calendar}>
-      <h1>Welcome to R2Dispatch</h1>
-
       <TUICalendar
         ref={cal}
         height="900px"
