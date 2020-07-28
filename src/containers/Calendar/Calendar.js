@@ -5,6 +5,8 @@ import { ISchedule } from "tui-calendar";
 
 import classes from "./Calendar.module.css";
 import "tui-calendar/dist/tui-calendar.css";
+import "tui-date-picker/dist/tui-date-picker.css";
+import "tui-time-picker/dist/tui-time-picker.css";
 
 const start = new Date();
 const end = new Date(new Date().setMinutes(start.getMinutes() + 30));
