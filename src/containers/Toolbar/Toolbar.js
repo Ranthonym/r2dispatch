@@ -8,7 +8,9 @@ import classes from "./Toolbar.module.css";
 export default function Toolbar() {
   return (
     <div className={classes.Toolbar}>
-      <h1>Welcome to R2Dispatch</h1>
+      <h1 style={{ textAlign: "center", fontWeight: "bold", color: "#ff72ff" }}>
+        R2Dispatch
+      </h1>
       <DropdownButton id="dropdown-basic-button" title="Dropdown button">
         <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
