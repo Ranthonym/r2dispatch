@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./containers/Toolbar/Toolbar";
 // import Calendar from "../src/containers/Calendar/Calendar";
