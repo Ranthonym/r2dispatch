@@ -2,11 +2,10 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Header from "./containers/Toolbar/Toolbar";
-// import Calendar from "../src/containers/Calendar/Calendar";
+import Toolbar from "./containers/Toolbar/Toolbar";
 
 function App() {
-  return <Header />;
+  return <Toolbar />;
 }
 
 export default App;
