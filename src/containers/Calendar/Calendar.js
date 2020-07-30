@@ -16,16 +16,16 @@ const schedules: ISchedule[] = [
     calendarId: "1",
     category: "time",
     isVisible: true,
-    title: "Study",
+    title: "Hamilton Delivery",
     id: "1",
-    body: "Test",
+    body: "Sterile mask shipment",
     start,
     end,
   },
 ];
 
-export default function Calendar() {
-  const cal = useRef(null);
+export default function Calendar(props) {
+  const cal = useRef(props.cal);
 
   // add new schedule object
   const onBeforeCreateSchedule = useCallback((scheduleData) => {
@@ -76,6 +76,7 @@ export default function Calendar() {
     <div className={classes.Calendar}>
       <TUICalendar
         ref={cal}
+        name={props.driverName}
         height="900px"
         view={"week"}
         schedules={schedules}

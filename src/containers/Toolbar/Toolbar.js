@@ -7,6 +7,10 @@ import classes from "./Toolbar.module.css";
 
 export default function Toolbar() {
   const [driver, setDriver] = useState(null);
+
+  const switchDriver = (name) => setDriver(name);
+  // console.log(driver);
+
   return (
     <div className={classes.Toolbar}>
       <h1 style={{ textAlign: "center", fontWeight: "bold", color: "#ff72ff" }}>
@@ -17,15 +21,15 @@ export default function Toolbar() {
         variant="info"
         title="Dropdown button"
       >
-        <Dropdown.Item onClick={() => setDriver("abe")}>Abe</Dropdown.Item>
-        <Dropdown.Item onClick={() => setDriver("maggie")}>
+        <Dropdown.Item onClick={() => switchDriver("abe")}>Abe</Dropdown.Item>
+        <Dropdown.Item onClick={() => switchDriver("maggie")}>
           Maggie
         </Dropdown.Item>
-        <Dropdown.Item onClick={() => setDriver("hunter")}>
+        <Dropdown.Item onClick={() => switchDriver("hunter")}>
           Hunter
         </Dropdown.Item>
       </DropdownButton>
-      <Calendar />
+      <Calendar driverName={driver} />
     </div>
   );
 }
